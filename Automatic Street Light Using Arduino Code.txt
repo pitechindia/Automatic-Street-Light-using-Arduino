@@ -1,0 +1,31 @@
+// Eddie Yadav 
+// Founder & CEO 
+//Pi-tech
+
+int Sensor = A0;
+int bulb = 5;
+int Light;
+void setup() {
+  Serial.begin(9600);
+  pinMode(Sensor, INPUT);
+  pinMode(bulb, OUTPUT);
+  digitalWrite(bulb, HIGH);
+}
+
+void loop() {
+  Light = analogRead(Sensor);
+  Serial.print("Intensity=");
+  Serial.println(Light);
+  if (Light < 200)
+  {
+    digitalWrite(bulb, LOW);
+    Serial.println("NIGHT...");
+  }
+  if (Light >= 200)
+  {
+    digitalWrite(bulb, HIGH);
+    Serial.println("DAY....");
+  }
+  Serial.println();
+  delay(1000);
+}
